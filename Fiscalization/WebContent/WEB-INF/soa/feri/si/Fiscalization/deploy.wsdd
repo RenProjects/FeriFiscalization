@@ -1,0 +1,333 @@
+<!-- Use this file to deploy some handlers/chains and services      -->
+<!-- Two ways to do this:                                           -->
+<!--   java org.apache.axis.client.AdminClient deploy.wsdd          -->
+<!--      after the axis server is running                          -->
+<!-- or                                                             -->
+<!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   -->
+<!--      from the same directory that the Axis engine runs         -->
+
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from FiscalizationService WSDL service -->
+
+  <service name="FiscalizationVerificationSOAP" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://si.feri.soa/Fiscalization/"/>
+      <parameter name="wsdlServiceElement" value="FiscalizationService"/>
+      <parameter name="schemaUnqualified" value="http://si.feri.soa/Fiscalization/"/>
+      <parameter name="wsdlServicePort" value="FiscalizationVerificationSOAP"/>
+      <parameter name="className" value="soa.feri.si.Fiscalization.FiscalizationServiceSOAPSkeleton"/>
+      <parameter name="wsdlPortType" value="FiscalizationService"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <parameter name="allowedMethods" value="*"/>
+
+      <typeMapping
+        xmlns:ns="http://si.feri.soa/Fiscalization/"
+        qname="ns:GUIDType"
+        type="java:java.lang.String"
+        serializer="org.apache.axis.encoding.ser.SimpleSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.SimpleDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://si.feri.soa/Fiscalization/"
+        qname="ns:AddressType"
+        type="java:soa.feri.si.Fiscalization.AddressType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://si.feri.soa/Fiscalization/"
+        qname="ns:TaxRateType"
+        type="java:java.lang.String"
+        serializer="org.apache.axis.encoding.ser.SimpleSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.SimpleDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://si.feri.soa/Fiscalization/"
+        qname="ns:>AddressType>Street"
+        type="java:java.lang.String"
+        serializer="org.apache.axis.encoding.ser.SimpleSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.SimpleDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://si.feri.soa/Fiscalization/"
+        qname="ns:AmountType"
+        type="java:java.lang.String"
+        serializer="org.apache.axis.encoding.ser.SimpleSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.SimpleDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://si.feri.soa/Fiscalization/"
+        qname="ns:>AddressType>City"
+        type="java:java.lang.String"
+        serializer="org.apache.axis.encoding.ser.SimpleSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.SimpleDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://si.feri.soa/Fiscalization/"
+        qname="ns:NumberType"
+        type="java:java.lang.String"
+        serializer="org.apache.axis.encoding.ser.SimpleSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.SimpleDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://si.feri.soa/Fiscalization/"
+        qname="ns:InvoiceType"
+        type="java:soa.feri.si.Fiscalization.InvoiceType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://si.feri.soa/Fiscalization/"
+        qname="ns:>AddressType>HouseNumber"
+        type="java:java.lang.String"
+        serializer="org.apache.axis.encoding.ser.SimpleSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.SimpleDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://si.feri.soa/Fiscalization/"
+        qname="ns:VATType"
+        type="java:java.lang.String"
+        serializer="org.apache.axis.encoding.ser.SimpleSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.SimpleDeserializerFactory"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://si.feri.soa/Fiscalization/"
+        qname="ns:>>DataResponse>Invoices"
+        type="java:soa.feri.si.Fiscalization.InvoiceType[]"
+        innerType="cmp-ns:InvoiceType" xmlns:cmp-ns="http://si.feri.soa/Fiscalization/"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://si.feri.soa/Fiscalization/"
+        qname="ns:>AddressType>PostalCode"
+        type="java:java.lang.String"
+        serializer="org.apache.axis.encoding.ser.SimpleSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.SimpleDeserializerFactory"
+        encodingStyle=""
+      />
+  </service>
+  <service name="FiscalizationRegistrationSOAP" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://si.feri.soa/Fiscalization/"/>
+      <parameter name="wsdlServiceElement" value="FiscalizationService"/>
+      <parameter name="schemaUnqualified" value="http://si.feri.soa/Fiscalization/"/>
+      <parameter name="wsdlServicePort" value="FiscalizationRegistrationSOAP"/>
+      <parameter name="className" value="soa.feri.si.Fiscalization.FiscalizationServiceSOAPSkeleton"/>
+      <parameter name="wsdlPortType" value="FiscalizationService"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <parameter name="allowedMethods" value="*"/>
+
+      <typeMapping
+        xmlns:ns="http://si.feri.soa/Fiscalization/"
+        qname="ns:GUIDType"
+        type="java:java.lang.String"
+        serializer="org.apache.axis.encoding.ser.SimpleSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.SimpleDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://si.feri.soa/Fiscalization/"
+        qname="ns:AddressType"
+        type="java:soa.feri.si.Fiscalization.AddressType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://si.feri.soa/Fiscalization/"
+        qname="ns:TaxRateType"
+        type="java:java.lang.String"
+        serializer="org.apache.axis.encoding.ser.SimpleSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.SimpleDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://si.feri.soa/Fiscalization/"
+        qname="ns:>AddressType>Street"
+        type="java:java.lang.String"
+        serializer="org.apache.axis.encoding.ser.SimpleSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.SimpleDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://si.feri.soa/Fiscalization/"
+        qname="ns:AmountType"
+        type="java:java.lang.String"
+        serializer="org.apache.axis.encoding.ser.SimpleSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.SimpleDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://si.feri.soa/Fiscalization/"
+        qname="ns:>AddressType>City"
+        type="java:java.lang.String"
+        serializer="org.apache.axis.encoding.ser.SimpleSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.SimpleDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://si.feri.soa/Fiscalization/"
+        qname="ns:NumberType"
+        type="java:java.lang.String"
+        serializer="org.apache.axis.encoding.ser.SimpleSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.SimpleDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://si.feri.soa/Fiscalization/"
+        qname="ns:InvoiceType"
+        type="java:soa.feri.si.Fiscalization.InvoiceType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://si.feri.soa/Fiscalization/"
+        qname="ns:>AddressType>HouseNumber"
+        type="java:java.lang.String"
+        serializer="org.apache.axis.encoding.ser.SimpleSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.SimpleDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://si.feri.soa/Fiscalization/"
+        qname="ns:VATType"
+        type="java:java.lang.String"
+        serializer="org.apache.axis.encoding.ser.SimpleSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.SimpleDeserializerFactory"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://si.feri.soa/Fiscalization/"
+        qname="ns:>>DataResponse>Invoices"
+        type="java:soa.feri.si.Fiscalization.InvoiceType[]"
+        innerType="cmp-ns:InvoiceType" xmlns:cmp-ns="http://si.feri.soa/Fiscalization/"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://si.feri.soa/Fiscalization/"
+        qname="ns:>AddressType>PostalCode"
+        type="java:java.lang.String"
+        serializer="org.apache.axis.encoding.ser.SimpleSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.SimpleDeserializerFactory"
+        encodingStyle=""
+      />
+  </service>
+  <service name="FiscalizationObtainInvoicesSOAP" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://si.feri.soa/Fiscalization/"/>
+      <parameter name="wsdlServiceElement" value="FiscalizationService"/>
+      <parameter name="schemaUnqualified" value="http://si.feri.soa/Fiscalization/"/>
+      <parameter name="wsdlServicePort" value="FiscalizationObtainInvoicesSOAP"/>
+      <parameter name="className" value="soa.feri.si.Fiscalization.FiscalizationServiceSOAPSkeleton"/>
+      <parameter name="wsdlPortType" value="FiscalizationService"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <parameter name="allowedMethods" value="*"/>
+
+      <typeMapping
+        xmlns:ns="http://si.feri.soa/Fiscalization/"
+        qname="ns:GUIDType"
+        type="java:java.lang.String"
+        serializer="org.apache.axis.encoding.ser.SimpleSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.SimpleDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://si.feri.soa/Fiscalization/"
+        qname="ns:AddressType"
+        type="java:soa.feri.si.Fiscalization.AddressType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://si.feri.soa/Fiscalization/"
+        qname="ns:TaxRateType"
+        type="java:java.lang.String"
+        serializer="org.apache.axis.encoding.ser.SimpleSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.SimpleDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://si.feri.soa/Fiscalization/"
+        qname="ns:>AddressType>Street"
+        type="java:java.lang.String"
+        serializer="org.apache.axis.encoding.ser.SimpleSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.SimpleDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://si.feri.soa/Fiscalization/"
+        qname="ns:AmountType"
+        type="java:java.lang.String"
+        serializer="org.apache.axis.encoding.ser.SimpleSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.SimpleDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://si.feri.soa/Fiscalization/"
+        qname="ns:>AddressType>City"
+        type="java:java.lang.String"
+        serializer="org.apache.axis.encoding.ser.SimpleSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.SimpleDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://si.feri.soa/Fiscalization/"
+        qname="ns:NumberType"
+        type="java:java.lang.String"
+        serializer="org.apache.axis.encoding.ser.SimpleSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.SimpleDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://si.feri.soa/Fiscalization/"
+        qname="ns:InvoiceType"
+        type="java:soa.feri.si.Fiscalization.InvoiceType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://si.feri.soa/Fiscalization/"
+        qname="ns:>AddressType>HouseNumber"
+        type="java:java.lang.String"
+        serializer="org.apache.axis.encoding.ser.SimpleSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.SimpleDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://si.feri.soa/Fiscalization/"
+        qname="ns:VATType"
+        type="java:java.lang.String"
+        serializer="org.apache.axis.encoding.ser.SimpleSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.SimpleDeserializerFactory"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://si.feri.soa/Fiscalization/"
+        qname="ns:>>DataResponse>Invoices"
+        type="java:soa.feri.si.Fiscalization.InvoiceType[]"
+        innerType="cmp-ns:InvoiceType" xmlns:cmp-ns="http://si.feri.soa/Fiscalization/"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://si.feri.soa/Fiscalization/"
+        qname="ns:>AddressType>PostalCode"
+        type="java:java.lang.String"
+        serializer="org.apache.axis.encoding.ser.SimpleSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.SimpleDeserializerFactory"
+        encodingStyle=""
+      />
+  </service>
+</deployment>

@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://si.feri.soa/Fiscalization/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="Fiscalization" targetNamespace="http://si.feri.soa/Fiscalization/">
+	<wsdl:types>
+		<xsd:schema targetNamespace="http://si.feri.soa/Fiscalization/">
+			<!-- Registration Request/Response -->
+			<xsd:element name="Registration">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="VAT" type="tns:VATType"/>
+						<xsd:element name="Address" type="tns:AddressType"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			
+			<xsd:element name="RegistrationResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="ContainKey" type="tns:NumberType"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			
+			<xsd:simpleType name="VATType">
+				<xsd:restriction base="xsd:string">
+					<xsd:pattern value="SI[0-9]{8}"/>
+					<xsd:length value="10"/>
+				</xsd:restriction>
+			</xsd:simpleType>
+			
+			<xsd:simpleType name="NumberType">
+				<xsd:restriction base="xsd:string">
+					<xsd:minLength value="1"/>
+					<xsd:maxLength value="20"/>
+					<xsd:pattern value="\d*"/>
+				</xsd:restriction>
+			</xsd:simpleType>
+			
+			<xsd:complexType name="AddressType">
+				<xsd:sequence>
+					<xsd:element name="Street">
+						<xsd:simpleType>
+							<xsd:restriction base="xsd:string">
+								<xsd:minLength value="1"/>
+								<xsd:maxLength value="100"/>
+							</xsd:restriction>
+						</xsd:simpleType>
+					</xsd:element>
+					<xsd:element name="HouseNumber">
+						<xsd:simpleType>
+							<xsd:restriction base="xsd:string">
+								<xsd:minLength value="1"/>
+								<xsd:maxLength value="4"/>
+							</xsd:restriction>
+						</xsd:simpleType>
+					</xsd:element>
+					<xsd:element name="PostalCode">
+						<xsd:simpleType>
+							<xsd:restriction base="xsd:string">
+								<xsd:pattern value="[0-9]{4}"/>
+								<xsd:length value="4"/>
+							</xsd:restriction>
+						</xsd:simpleType>
+					</xsd:element>
+					<xsd:element name="City">
+						<xsd:simpleType>
+							<xsd:restriction base="xsd:string">
+								<xsd:minLength value="1"/>
+								<xsd:maxLength value="100"/>
+							</xsd:restriction>
+						</xsd:simpleType>
+					</xsd:element>
+				</xsd:sequence>
+			</xsd:complexType>
+		</xsd:schema>
+	</wsdl:types>
+
+
+	<wsdl:message name="FiscalizationRequest">
+		<wsdl:part element="tns:Registration" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="FiscalizationResponse">
+		<wsdl:part element="tns:RegistrationResponse" name="parameters"/>
+	</wsdl:message>
+
+
+	<wsdl:portType name="FiscalizationService">
+		<wsdl:operation name="Registration">
+			<wsdl:input message="tns:FiscalizationRequest"/>
+			<wsdl:output message="tns:FiscalizationResponse"/>
+		</wsdl:operation>
+	</wsdl:portType>
+
+
+	<wsdl:binding name="FiscalizationServiceSOAP" type="tns:FiscalizationService">
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<wsdl:operation name="Registration">
+			<soap:operation soapAction="http://si.feri.soa/Fiscalization/Registration"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+
+
+	<wsdl:service name="FiscalizationService">
+		<wsdl:port binding="tns:FiscalizationServiceSOAP" name="FiscalizationServiceSOAP">
+			<soap:address location="http://localhost:8080/Fiscalization/services/FiscalizationServiceSOAP"/>
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,5 @@
+http://localhost:8080/Fiscalization/services/FiscalizationRegistrationSOAP?wsdl
+
+http://localhost:8080/Fiscalization/services/FiscalizationVerificationSOAP?wsdl
+
+http://localhost:8080/Fiscalization/services/FiscalizationObtainInvoicesSOAP?wsdl

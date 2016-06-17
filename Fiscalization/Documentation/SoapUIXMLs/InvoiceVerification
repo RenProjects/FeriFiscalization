@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:fis="http://si.feri.soa/Fiscalization/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <fis:InvoiceVerificationRequest>
+         <VAT>SI12345678</VAT>
+         <ContainKey>12346</ContainKey>
+         <DateOfIssue>2016-06-16T06:00:00</DateOfIssue>
+         <Invoice>
+            <SequentialNumber>123</SequentialNumber>
+            <TaxRate>25.00</TaxRate>
+            <TaxAmount>25.00</TaxAmount>
+            <TotalAmount>125.00</TotalAmount>
+         </Invoice>
+      </fis:InvoiceVerificationRequest>
+   </soapenv:Body>
+</soapenv:Envelope>

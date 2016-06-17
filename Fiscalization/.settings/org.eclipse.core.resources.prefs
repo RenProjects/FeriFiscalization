@@ -1,0 +1,9 @@
+eclipse.preferences.version=1
+encoding//src/soa/feri/si/Fiscalization/AddressType.java=UTF-8
+encoding//src/soa/feri/si/Fiscalization/FiscalizationServiceSOAPImpl.java=UTF-8
+encoding//src/soa/feri/si/Fiscalization/FiscalizationServiceSOAPSkeleton.java=UTF-8
+encoding//src/soa/feri/si/Fiscalization/FiscalizationServiceSOAPStub.java=UTF-8
+encoding//src/soa/feri/si/Fiscalization/FiscalizationService_PortType.java=UTF-8
+encoding//src/soa/feri/si/Fiscalization/FiscalizationService_Service.java=UTF-8
+encoding//src/soa/feri/si/Fiscalization/FiscalizationService_ServiceLocator.java=UTF-8
+encoding//src/soa/feri/si/Fiscalization/InvoiceType.java=UTF-8
